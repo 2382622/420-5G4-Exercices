@@ -40,6 +40,20 @@ void afficherListe(Noeud* tete) {
     cout << "NULL" << endl;
 }
 
+// Étape #3
+void ajouterFin(Noeud*& tete, int valeur) {
+    Noeud* nouveau = new Noeud(valeur);
+    if (tete == nullptr) {
+        tete = nouveau;
+    } else {
+        Noeud* courant = tete;
+        while (courant->suivant != nullptr) {
+            courant = courant->suivant;
+        }
+        courant->suivant = nouveau;
+    }
+}
+
 int main() {
     // TODO: Créer 3 nœuds et les relier
     Noeud* tete = nullptr;
@@ -72,19 +86,10 @@ int main() {
     cout << "Liste après ajout de 30: ";
     afficherListe(tete);
 
+    ajouterFin(tete, 50);
+    cout << "Après ajout de 50: ";
+    afficherListe(tete);
+
     return 0;
 }  
 
-// Étape #3
-void ajouterFIn(Noeud*& tete, int valeur) {
-    Noeud* nouveau = new Noeud(valeur);
-    if (tete == nullptr) {
-        tete = nouveau;
-    } else {
-        Noeud* courant = tete;
-        while (courant->suivant != nullptr) {
-            courant = courant->suivant;
-        }
-        courant->suivant = nouveau;
-    }
-}
